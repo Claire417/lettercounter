@@ -10,16 +10,19 @@
 #include <ctype.h>
 
 #define COUNT_SIZE 26
+#define BUFFER_SIZE 1024
 
 int main()
 {
-  char buffer[1024], input, curchar;
+  char buffer[BUFFER_SIZE], input, curchar;
   int i = 0, count[COUNT_SIZE];
+  int spaces = 0;
   int other = 0;
+
 
   // request and read in the string from the user
   printf("Enter text for analysis: ");
-  while ( (input = getchar()) != '\n' ) {
+  while ( (input = getchar()) != '\n' ) &&(i<(BUFFER_SIZE-1))){
     buffer[i++] = input;
   }
   buffer[i] = '\0';
@@ -37,6 +40,7 @@ int main()
     curchar = toupper(buffer[i]);
     if (curchar >= 65 && curchar <= 90) count[curchar - 65]++;
     else other++;
+    if (curchar == ' ') spaces++
   }
 
   // Create the letter analysis table
@@ -52,7 +56,7 @@ int main()
   printf("%-10s%-15d%-15.2f\n","Other",
                               other,
                               (((float) count[i]) / strlen(buffer)) * 100);
-
+  prinf("\nTotal spaces:%d\n, soaces);
   // Find the max and min occuring character in the string, in particular the
   // position in the count array of each character
   int max, min, max_pos, min_pos;
