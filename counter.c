@@ -46,7 +46,7 @@ int main()
   for (i = 0; i < COUNT_SIZE; i++) {
     printf("%-10c%-15d%-15.2f\n", i + 65,
                                count[i],
-                               (((float) count[i]) / strlen(buffer)) * 100);
+                               (((float) other) / strlen(buffer)) * 100);
   }
   // Output the number of other characters
   printf("%-10s%-15d%-15.2f\n","Other",
